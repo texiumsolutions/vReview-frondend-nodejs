@@ -52,4 +52,4 @@ jobs:
           app-name: 'vReview-frondend-nodejs'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F39480DC10241B6BFBFF9521B6D3FD0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0E35B449DC8743458AA9121E3495B6CC }}
