@@ -1,16 +1,36 @@
-const mongoose = require('mongoose');
+const express = require('express');
+const connectDB = require('./config/db'); // Adjust path as needed
+require('dotenv').config();
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect('mongodb+srv://arsh001356_db_user:KwHqOknnOR1REDRC@user.je5xlkv.mongodb.net/?retryWrites=true&w=majority&appName=user/yourDatabaseName', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('MongoDB Connected...');
-    } catch (err) {
-        console.error(err.message);
-        process.exit(1);
-    }
-};
+const app = express();
 
-module.exports = connectDB;
+// Connect to Database
+connectDB();
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.get('/', (req, res) => {
+    res.json({
+        message: 'Server is running!',
+        database: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected',
+        timestamp: new Date().toISOString()
+    });
+});
+
+app.get('/health', (req, res) => {
+    const dbStatus = mongoose.connection.readyState;
+    res.json({
+        server: 'running',
+        database: dbStatus === 1 ? 'connected' : 'disconnected',
+        timestamp: new Date().toISOString()
+    });
+});
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+    console.log(`✅ MongoDB State Code: ${mongoose.connection.readyState}`);
+    console.log(`✅ Environment: ${process.env.NODE_ENV || 'development'}`);
+});
