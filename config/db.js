@@ -3,15 +3,11 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
     try {
         // Use environment variable or default local URI
-        const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/omixflowDB';
+        const mongoURI = 'mongodb+srv://omixmongodb:xT72ZwlKS0zirrDw@cluster0.o3jj6wy.mongodb.net/?appName=Cluster0';
         
         console.log('Attempting to connect to MongoDB...');
         
-        // Hide password in logs for security
-        if (mongoURI) {
-            const maskedURI = mongoURI.replace(/:[^:@]*@/, ':*****@');
-            console.log('Database URI:', maskedURI);
-        }
+        
         
         // Connect without deprecated options
         await mongoose.connect(mongoURI);
