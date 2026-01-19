@@ -134,8 +134,8 @@ app.listen(PORT, '0.0.0.0', () => {
 ║ Environment: ${process.env.NODE_ENV || 'development'}       ║
 ║ Database: ${mongoose.connection.readyState === 1 ? '✅ Connected' : '❌ Disconnected'} ║
 ║ Local URL: http://localhost:${PORT}                         ║
-║ Azure URL: https://omixflow-ui-nodejs.azurewebsites.net     ║
-║ Health Check: /health                                        ║
+║     ║
+║                                       ║
 ╚══════════════════════════════════════════════════════════════╝
   `);
 });
