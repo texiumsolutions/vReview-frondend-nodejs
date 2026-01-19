@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
     try {
         // Use environment variable or default local URI
-        const mongoURI = 'mongodb+srv://omixmongodb:xT72ZwlKS0zirrDw@cluster0.o3jj6wy.mongodb.net/?appName=Cluster0';
+        const mongoURI = 'mongodb+srv://omixmongodb:BioInformatics135@cluster0.o3jj6wy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
         
         console.log('Attempting to connect to MongoDB...');
         
